@@ -92,10 +92,9 @@
             color: var(--accent);
         }
 
-        /* Project Section Styling */
         .project-image-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
@@ -103,29 +102,27 @@
             background: rgba(255,255,255,0.02);
             border: 1px solid var(--border);
             border-radius: 6px;
-            padding: 10px;
-            transition: border-color 0.3s ease;
+            padding: 12px;
+            transition: all 0.3s ease;
         }
         .project-img-wrapper:hover {
             border-color: var(--accent);
+            background: rgba(255,255,255,0.04);
         }
         .project-image-title {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
             margin-bottom: 10px;
             display: block;
             font-weight: 500;
+            min-height: 2.5em;
         }
         .project-img {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
             border-radius: 4px;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-        .project-img:hover {
-            opacity: 1;
+            opacity: 0.9;
         }
 
         .tag {
@@ -148,10 +145,6 @@
             margin-bottom: 2rem;
             border: 1px solid var(--border);
             backdrop-filter: blur(5px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .project-card:hover { 
-            border-color: var(--hover-border);
         }
         .section-sub-heading {
             color: var(--accent);
@@ -209,12 +202,10 @@
         </p>
     </section>
 
-    <section id="projects">
-        <h2>Technical Projects</h2>
-        
     <section id="research">
         <h2>Research & Publications</h2>
         <h3 class="section-sub-heading">Conferences</h3>
+        
         <div class="project-card">
             <h3 style="margin: 0 0 10px 0;">A Highly Sensitive and Optimized SPR Biosensor for Monitoring Polluted Water Samples</h3>
             <p><em style="color: var(--text-secondary);">ICECTE, 2026 | Rajshahi, Bangladesh</em></p>
@@ -222,27 +213,39 @@
                 <a href="https://ieeexplore.ieee.org/document/11429250" target="_blank" style="color: var(--accent);">View on IEEE Xplore →</a>
             </p>
         </div>
+
+        <div class="project-card">
+            <h3 style="margin: 0 0 10px 0;">Design and Performance Analysis of a Highly Sensitive SPR Biosensor for Water Pollution Detection</h3>
+            <p><em style="color: var(--text-secondary);">FiO+LS, 2025 | Virtual</em></p>
+            <p style="margin-top: 15px;">
+                <a href="https://doi.org/10.1364/FIO.2025.JD1A.5" target="_blank" style="color: var(--accent);">View Publication →</a>
+            </p>
+        </div>
     </section>
 
-    <div class="project-card">
-            <h3 style="margin: 0; color: var(--text-primary);">Projects</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 20px;">Design of an efficient data packet managing network router chip using 45 nm technology node.</p>
+
+    <section id="projects">
+        <h2>Technical Projects</h2>
+        <div class="project-card">
+            <h3 style="margin: 0; color: var(--text-primary);">Data Packet Managing Network Router Chip</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">Design of an efficient router chip using the 45 nm technology node</p>
+            
             <div class="project-image-container">
                 <div class="project-img-wrapper">
-                    <span class="project-image-title">Synthesized schematic view of the router chip</span>
+                    <span class="project-image-title">Synthesized Schematic View</span>
                     <img src="project1-1.png" alt="Synthesis" class="project-img">
                 </div>
                 <div class="project-img-wrapper">
-                    <span class="project-image-title">Generated GDSII file of the router chip</span>
+                    <span class="project-image-title">Generated GDSII File</span>
                     <img src="project1-2.png" alt="GDSII" class="project-img">
                 </div>
-            </div>
-            <div class="project-img-wrapper">
-                    <span class="project-image-title">Layout view of the router chip</span>
+                <div class="project-img-wrapper">
+                    <span class="project-image-title">Final Layout View</span>
                     <img src="project1-3.png" alt="Layout" class="project-img">
                 </div>
             </div>
         </div>
+    </section>
     
     <section id="education">
         <h2>Education</h2>
@@ -277,7 +280,7 @@
             <p style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Industry Standard Tools</p> 
             <span class="tag">Cadence Innovus</span>
             <span class="tag">Cadence Genus</span>
-            <span class="tag">Cadence Virtuso</span>
+            <span class="tag">Cadence Virtuoso</span>
             <span class="tag">COMSOL Multiphysics</span>
             <span class="tag">MATLAB</span>
         </div>
