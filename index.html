@@ -13,6 +13,7 @@
             --card-bg: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.1);
             --hover-border: rgba(255, 255, 255, 0.2);
+            --header-highlight: rgba(34, 197, 94, 0.05);
         }
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -27,14 +28,20 @@
             margin: 0 auto;
             padding: 60px 20px;
         }
+
+        /* Highlighted Header Section */
         header {
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 3rem;
+            background: linear-gradient(145deg, var(--header-highlight), transparent);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem;
             margin-bottom: 3rem;
             display: flex;
             align-items: center;
             gap: 40px;
+            backdrop-filter: blur(10px);
         }
+
         .profile-photo {
             width: 180px;
             height: 180px;
@@ -42,7 +49,7 @@
             object-fit: cover;
             object-position: top;
             border: 2px solid var(--accent);
-            box-shadow: 0 0 15px rgba(34, 197, 94, 0.15);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
             flex-shrink: 0;
         }
         .header-text { flex: 1; }
@@ -92,6 +99,7 @@
             color: var(--accent);
         }
 
+        /* Project Grid & Clickable Images */
         .project-image-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -104,6 +112,7 @@
             border-radius: 6px;
             padding: 12px;
             transition: all 0.3s ease;
+            cursor: zoom-in;
         }
         .project-img-wrapper:hover {
             border-color: var(--accent);
@@ -123,6 +132,24 @@
             object-fit: cover;
             border-radius: 4px;
             opacity: 0.9;
+        }
+
+        /* Lightbox Styles (Zoom View) */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 2px solid var(--border);
+            border-radius: 8px;
         }
 
         .tag {
@@ -173,13 +200,17 @@
         footer { text-align: center; margin-top: 8rem; padding: 4rem 0; color: var(--text-secondary); font-size: 0.8rem; border-top: 1px solid var(--border); }
 
         @media (max-width: 768px) {
-            header { flex-direction: column; text-align: center; gap: 20px; }
+            header { flex-direction: column; text-align: center; gap: 20px; padding: 2rem; }
             .social-box { flex-wrap: wrap; justify-content: center; }
             h2::after { display: none; }
         }
     </style>
 </head>
 <body>
+
+<div id="lightbox" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="" alt="Zoomed view">
+</div>
 
 <div class="container">
     <header>
@@ -205,7 +236,6 @@
     <section id="research">
         <h2>Research & Publications</h2>
         <h3 class="section-sub-heading">Conferences</h3>
-        
         <div class="project-card">
             <h3 style="margin: 0 0 10px 0;">A Highly Sensitive and Optimized SPR Biosensor for Monitoring Polluted Water Samples</h3>
             <p><em style="color: var(--text-secondary);">ICECTE, 2026 | Rajshahi, Bangladesh</em></p>
@@ -213,7 +243,6 @@
                 <a href="https://ieeexplore.ieee.org/document/11429250" target="_blank" style="color: var(--accent);">View on IEEE Xplore →</a>
             </p>
         </div>
-
         <div class="project-card">
             <h3 style="margin: 0 0 10px 0;">Design and Performance Analysis of a Highly Sensitive SPR Biosensor for Water Pollution Detection</h3>
             <p><em style="color: var(--text-secondary);">FiO+LS, 2025 | Virtual</em></p>
@@ -223,23 +252,22 @@
         </div>
     </section>
 
-
     <section id="projects">
         <h2>Technical Projects</h2>
         <div class="project-card">
             <h3 style="margin: 0; color: var(--text-primary);">Data Packet Managing Network Router Chip</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 20px;">Design of an efficient router chip using the 45 nm technology node</p>
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">Design of an efficient router chip using the 45 nm technology node, focusing on high-speed data throughput and optimized power consumption.</p>
             
             <div class="project-image-container">
-                <div class="project-img-wrapper">
+                <div class="project-img-wrapper" onclick="zoomImage(this)">
                     <span class="project-image-title">Synthesized Schematic View</span>
                     <img src="project1-1.png" alt="Synthesis" class="project-img">
                 </div>
-                <div class="project-img-wrapper">
+                <div class="project-img-wrapper" onclick="zoomImage(this)">
                     <span class="project-image-title">Generated GDSII File</span>
                     <img src="project1-2.png" alt="GDSII" class="project-img">
                 </div>
-                <div class="project-img-wrapper">
+                <div class="project-img-wrapper" onclick="zoomImage(this)">
                     <span class="project-image-title">Final Layout View</span>
                     <img src="project1-3.png" alt="Layout" class="project-img">
                 </div>
@@ -298,6 +326,17 @@
         <p>&copy; 2026 | Designed by Mohammed Ashfaq Alavee</p>
     </footer>
 </div>
+
+<script>
+    function zoomImage(wrapper) {
+        const img = wrapper.querySelector('img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        lightboxImg.src = img.src;
+        lightbox.style.display = 'flex';
+    }
+</script>
 
 </body>
 </html>
