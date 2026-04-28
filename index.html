@@ -10,6 +10,8 @@
             --text: #f1f5f9;
             --accent: #38bdf8;
             --secondary: #94a3b8;
+            --card-bg: #1e293b;
+            --border: #334155;
         }
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -20,45 +22,51 @@
             padding: 0;
         }
         .container {
-            max-width: 800px;
+            max-width: 1100px; /* Increased width for a more spacious professional look */
             margin: 0 auto;
             padding: 40px 20px;
         }
         header {
-            border-bottom: 1px solid #1e293b;
+            border-bottom: 1px solid var(--border);
             padding-bottom: 2rem;
             margin-bottom: 2rem;
         }
         h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--accent); }
-        h2 { font-size: 1.5rem; color: var(--accent); border-left: 4px solid var(--accent); padding-left: 10px; margin-top: 2rem; }
-        .subtitle { font-size: 1.2rem; color: var(--secondary); }
+        h2 { font-size: 1.5rem; color: var(--accent); border-left: 4px solid var(--accent); padding-left: 10px; margin-top: 2.5rem; }
+        .subtitle { font-size: 1.2rem; color: var(--secondary); margin-bottom: 1rem; }
         .tag {
             display: inline-block;
-            background: #1e293b;
-            padding: 4px 12px;
-            border-radius: 15px;
+            background: var(--card-bg);
+            padding: 6px 14px;
+            border-radius: 20px;
             font-size: 0.85rem;
             margin: 4px;
-            border: 1px solid #334155;
+            border: 1px solid var(--border);
+            color: var(--text);
         }
         .project-card {
-            background: #1e293b;
-            padding: 20px;
-            border-radius: 8px;
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 12px;
             margin-bottom: 1.5rem;
             border: 1px solid transparent;
-            transition: 0.3s;
+            transition: transform 0.2s, border-color 0.2s;
         }
-        .project-card:hover { border-color: var(--accent); }
+        .project-card:hover { 
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
         .status-badge {
             font-size: 0.75rem;
             text-transform: uppercase;
             color: #fbbf24;
             font-weight: bold;
+            letter-spacing: 0.05rem;
         }
-        a { color: var(--accent); text-decoration: none; }
+        a { color: var(--accent); text-decoration: none; font-weight: 500; }
         a:hover { text-decoration: underline; }
-        footer { text-align: center; margin-top: 4rem; color: var(--secondary); font-size: 0.9rem; }
+        .social-links a { margin-right: 15px; }
+        footer { text-align: center; margin-top: 5rem; padding-bottom: 2rem; color: var(--secondary); font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -66,37 +74,37 @@
 <div class="container">
     <header>
         <h1>Mohammed Ashfaq Alavee</h1>
-        <p class="subtitle">Junior Engineer @ PrimeSilicon </p>
-        <div style="margin-top: 1rem;">
-            <a href="mailto:your-email@example.com">Email</a> • 
-            <a href="https://linkedin.com/in/yourprofile">LinkedIn</a> • 
-            <a href="https://github.com/alavee">GitHub</a>
+        <p class="subtitle">Junior ASIC Physical Design Engineer @ PrimeSilicon Technology (BD) Ltd.</p>
+        <div class="social-links">
+            <a href="mailto:alavee526@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/mohammed-ashfaq-alavee-51288b230" target="_blank">LinkedIn</a>
+            <a href="https://www.researchgate.net/profile/Mohammed-Alavee" target="_blank">ResearchGate</a>
         </div>
     </header>
 
     <section id="about">
         <h2>About Me</h2>
         <p>
-            As a graduate engineer, I am committed to turning engineering theory into practical results. 
-            By utilizing a wide range of technical resources, I develop reliable, high-quality solutions to solve complex real-world problems   
+            As a graduate engineer working in the semiconductor industry, I am committed to turning engineering theory into practical results. 
+            By utilizing a wide range of technical resources, I develop reliable, high-quality solutions to solve complex real-world problems.
         </p>
     </section>
 
     <section id="expertise">
-        <h2>Technical Knowledge:</h2>
+        <h2>Technical Proficiencies</h2>
         <div>
-            <strong>Theoretical Expertise:</strong> 
-            <span class="tag">Coding and Scripting</span>
-            <span class="tag">Timing Analysis</span>
-            <span class="tag">Physical Design Flow</span>
+            <strong>Core Competencies:</strong> 
+            <span class="tag">ASIC Physical Design Flow</span>
+            <span class="tag">Static Timing Analysis (STA)</span>
+            <span class="tag">Scripting & Automation (Tcl, C++)</span>
         </div>
-        <div style="margin-top: 10px;">
-            <strong>Software Expertise:</strong> 
+        <div style="margin-top: 15px;">
+            <strong>Software & Modeling:</strong> 
+            <span class="tag">Cadence Genus</span>
             <span class="tag">Cadence Innovus</span>
             <span class="tag">Cadence Virtuoso</span>
             <span class="tag">COMSOL Multiphysics</span>
             <span class="tag">MATLAB</span>
-            <span class="tag">Microsoft Office Tools (Word, Excel, Powerpoint)</span>
         </div>
     </section>
 
@@ -114,16 +122,16 @@
         <h2>Engineering Projects</h2>
         <div class="project-card">
             <h3>Automated Timing Report Generator</h3>
-            <p>Developed a custom Tcl/HTML tool for Innovus Stylus that generates interactive timing reports with click-to-copy functionality for faster debugging.</p>
+            <p>Developed a custom Tcl/HTML tool for Innovus Stylus that generates interactive timing reports with click-to-copy functionality for faster debugging and flow optimization.</p>
         </div>
         <div class="project-card">
             <h3>Surrogate Modeling with PINNs</h3>
-            <p>Building deep neural networks to optimize thickness parameters and figure of merit (FoM) in plasmonic sensor structures.</p>
+            <p>Building deep neural networks to optimize thickness parameters and Figure of Merit (FoM) in plasmonic sensor structures, reducing simulation time compared to traditional methods.</p>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 M. Hassan. Built with HTML/CSS.</p>
+        <p>&copy; 2026 Mohammed Ashfaq Alavee | Built with HTML & CSS</p>
     </footer>
 </div>
 
