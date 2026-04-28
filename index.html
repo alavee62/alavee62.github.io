@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Ashfaq Alavee | Engineer & Researcher</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --text: #f1f5f9;
+            --accent: #38bdf8;
+            --secondary: #94a3b8;
+        }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        header {
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--accent); }
+        h2 { font-size: 1.5rem; color: var(--accent); border-left: 4px solid var(--accent); padding-left: 10px; margin-top: 2rem; }
+        .subtitle { font-size: 1.2rem; color: var(--secondary); }
+        .tag {
+            display: inline-block;
+            background: #1e293b;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin: 4px;
+            border: 1px solid #334155;
+        }
+        .project-card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+        .project-card:hover { border-color: var(--accent); }
+        .status-badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #fbbf24;
+            font-weight: bold;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        footer { text-align: center; margin-top: 4rem; color: var(--secondary); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>M. Hassan (Alavee)</h1>
+        <p class="subtitle">Full-time Engineer @ PrimeSilicon | Part-time Researcher</p>
+        <div style="margin-top: 1rem;">
+            <a href="mailto:your-email@example.com">Email</a> • 
+            <a href="https://linkedin.com/in/yourprofile">LinkedIn</a> • 
+            <a href="https://github.com/alavee">GitHub</a>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I am a professional engineer specializing in <strong>ASIC/VLSI Physical Design</strong> and a researcher focused on 
+            <strong>Surface Plasmon Resonance (SPR) biosensors</strong>. My work bridges the gap between hardware 
+            implementation and computational physics, utilizing advanced simulation tools and neural networks to solve 
+            complex engineering challenges.
+        </p>
+    </section>
+
+    <section id="expertise">
+        <h2>Technical Expertise</h2>
+        <div>
+            <strong>Engineering:</strong> 
+            <span class="tag">Innovus Stylus (CUI)</span>
+            <span class="tag">Tcl Scripting</span>
+            <span class="tag">Timing Analysis</span>
+            <span class="tag">Physical Design Flow</span>
+        </div>
+        <div style="margin-top: 10px;">
+            <strong>Research:</strong> 
+            <span class="tag">COMSOL Multiphysics</span>
+            <span class="tag">PINNs</span>
+            <span class="tag">SPR Sensors</span>
+            <span class="tag">2D Materials (Graphene/BaTiO3)</span>
+        </div>
+    </section>
+
+    <section id="research">
+        <h2>Research & Publications</h2>
+        <div class="project-card">
+            <span class="status-badge">Required Reviews Completed</span>
+            <h3>Highly Sensitive SPR Biosensor using 2D Materials</h3>
+            <p>Investigation into refractive index sensing for viral biomarkers (HIV-1, SARS-CoV-2) using Graphene and Barium Titanate layers.</p>
+            <p><em>Journal: Surfaces and Interfaces</em></p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Engineering Projects</h2>
+        <div class="project-card">
+            <h3>Automated Timing Report Generator</h3>
+            <p>Developed a custom Tcl/HTML tool for Innovus Stylus that generates interactive timing reports with click-to-copy functionality for faster debugging.</p>
+        </div>
+        <div class="project-card">
+            <h3>Surrogate Modeling with PINNs</h3>
+            <p>Building deep neural networks to optimize thickness parameters and figure of merit (FoM) in plasmonic sensor structures.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 M. Hassan. Built with HTML/CSS.</p>
+    </footer>
+</div>
+
+</body>
+</html>
