@@ -22,7 +22,7 @@
             padding: 0;
         }
         .container {
-            max-width: 1100px; /* Increased width for a more spacious professional look */
+            max-width: 1100px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -30,8 +30,20 @@
             border-bottom: 1px solid var(--border);
             padding-bottom: 2rem;
             margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 30px;
         }
-        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--accent); }
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .header-text { flex: 1; }
+        h1 { font-size: 2.5rem; margin: 0 0 0.5rem 0; color: var(--accent); }
         h2 { font-size: 1.5rem; color: var(--accent); border-left: 4px solid var(--accent); padding-left: 10px; margin-top: 2.5rem; }
         .subtitle { font-size: 1.2rem; color: var(--secondary); margin-bottom: 1rem; }
         .tag {
@@ -42,7 +54,6 @@
             font-size: 0.85rem;
             margin: 4px;
             border: 1px solid var(--border);
-            color: var(--text);
         }
         .project-card {
             background: var(--card-bg);
@@ -63,22 +74,37 @@
             font-weight: bold;
             letter-spacing: 0.05rem;
         }
+        .section-sub-heading {
+            color: var(--secondary); 
+            font-size: 1rem; 
+            margin-top: 2rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
         a { color: var(--accent); text-decoration: none; font-weight: 500; }
         a:hover { text-decoration: underline; }
         .social-links a { margin-right: 15px; }
         footer { text-align: center; margin-top: 5rem; padding-bottom: 2rem; color: var(--secondary); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; text-align: center; }
+            .profile-photo { width: 120px; height: 120px; }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>Mohammed Ashfaq Alavee</h1>
-        <p class="subtitle">Junior ASIC Physical Design Engineer @ PrimeSilicon Technology (BD) Ltd.</p>
-        <div class="social-links">
-            <a href="mailto:alavee526@gmail.com">Email</a>
-            <a href="https://www.linkedin.com/in/mohammed-ashfaq-alavee-51288b230" target="_blank">LinkedIn</a>
-            <a href="https://www.researchgate.net/profile/Mohammed-Alavee" target="_blank">ResearchGate</a>
+        <img src="profile.jpg" alt="Mohammed Ashfaq Alavee" class="profile-photo">
+        <div class="header-text">
+            <h1>Mohammed Ashfaq Alavee</h1>
+            <p class="subtitle">Junior ASIC Physical Design Engineer @ PrimeSilicon Technology (BD) Ltd.</p>
+            <div class="social-links">
+                <a href="mailto:alavee526@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/mohammed-ashfaq-alavee-51288b230" target="_blank">LinkedIn</a>
+                <a href="https://www.researchgate.net/profile/Mohammed-Alavee" target="_blank">ResearchGate</a>
+            </div>
         </div>
     </header>
 
@@ -111,14 +137,20 @@
     <section id="research">
         <h2>Research & Publications</h2>
         
-        <h3 style="color: var(--secondary); font-size: 1.1rem; margin-top: 1.5rem; text-transform: uppercase; letter-spacing: 1px;">Journal Publications</h3>
-                
-        <h3 style="color: var(--secondary); font-size: 1.1rem; margin-top: 2rem; text-transform: uppercase; letter-spacing: 1px;">Conference Presentations</h3>
+        <h3 class="section-sub-heading">Journal Publications</h3>
+        <div class="project-card">
+            <span class="status-badge">Required Reviews Completed</span>
+            <h3>Highly Sensitive SPR Biosensor using 2D Materials</h3>
+            <p>Investigation into refractive index sensing for viral biomarkers (HIV-1, SARS-CoV-2) using Graphene and Barium Titanate layers.</p>
+            <p><em>Journal: Surfaces and Interfaces</em></p>
+        </div>
         
+        <h3 class="section-sub-heading">Conference Presentations</h3>
         <div class="project-card">
             <h3>A Highly Sensitive and Optimized SPR Biosensor for Monitoring Polluted Water Samples</h3>
+            <p>Analysis of sensor performance in detecting contaminants in water samples using optimized plasmonic layers.</p>
             <p><em>ICECTE, 2026 | Virtual</em></p>
-            <a href="https://ieeexplore.ieee.org/document/11429250"</a>
+            <a href="https://ieeexplore.ieee.org/document/11429250" target="_blank">View Paper on IEEE Xplore →</a>
         </div>
     </section>
 
