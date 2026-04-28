@@ -90,6 +90,27 @@
             letter-spacing: 1.5px;
             font-weight: 600;
         }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--accent);
+            color: var(--bg) !important; /* Makes text dark on light blue button */
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            transition: transform 0.2s, background-color 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .download-btn:hover {
+            transform: scale(1.05);
+            background-color: #7dd3fc; /* A slightly lighter blue */
+            text-decoration: none !important;
+        }
+        .download-btn svg {
+            margin-right: 8px;
+        }
         a { color: var(--accent); text-decoration: none; font-weight: 500; transition: opacity 0.2s; }
         a:hover { opacity: 0.8; text-decoration: underline; }
         .social-links a { margin-right: 20px; font-size: 0.95rem; }
@@ -120,6 +141,16 @@
             </div>
         </div>
     </header>
+    
+    <section id="cv-download" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border);">
+        <h2>Curriculum Vitae</h2>
+        <p style="color: var(--secondary);">Detailed overview of my professional experience, research, and technical skills.</p>
+        
+        <a href="CV_Alavee.pdf" download class="download-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download Resume / CV
+        </a>
+    </section>
 
     <section id="about">
         <h2>About Me</h2>
@@ -129,34 +160,16 @@
         </p>
     </section>
 
-    <section id="expertise">
-        <h2>Technical Proficiencies</h2>
-        <div style="margin-bottom: 1rem;">
-            <strong style="display: block; margin-bottom: 8px; color: var(--secondary); font-size: 0.9rem;">CORE COMPETENCIES</strong> 
-            <span class="tag">ASIC Physical Design Flow</span>
-            <span class="tag">Static Timing Analysis (STA)</span>
-            <span class="tag">Scripting & Automation (Tcl, C++)</span>
-        </div>
-        <div>
-            <strong style="display: block; margin-bottom: 8px; color: var(--secondary); font-size: 0.9rem;">SOFTWARE & MODELING</strong> 
-            <span class="tag">Cadence Genus</span>
-            <span class="tag">Cadence Innovus</span>
-            <span class="tag">Cadence Virtuoso</span>
-            <span class="tag">COMSOL Multiphysics</span>
-            <span class="tag">MATLAB</span>
-        </div>
-    </section>
-
     <section id="research">
         <h2>Research & Publications</h2>
         
-        <h3 class="section-sub-heading">Journal Publications</h3>
+        /*<h3 class="section-sub-heading">Journal Publications</h3>
         <div class="project-card">
             <span class="status-badge">Required Reviews Completed</span>
             <h3 style="margin: 10px 0;">Highly Sensitive SPR Biosensor using 2D Materials</h3>
             <p>Investigation into refractive index sensing for viral biomarkers (HIV-1, SARS-CoV-2) using Graphene and Barium Titanate layers.</p>
             <p><em style="color: var(--accent);">Journal: Surfaces and Interfaces</em></p>
-        </div>
+        </div>*/
         
         <h3 class="section-sub-heading">Conferences</h3>
         <div class="project-card">
@@ -194,6 +207,24 @@
                     <p style="margin: 10px 0 0 0; font-size: 0.9rem; color: var(--secondary); font-weight: 600;">2021 — 2025</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section id="expertise">
+        <h2>Technical Proficiencies</h2>
+        <div style="margin-bottom: 1rem;">
+            <strong style="display: block; margin-bottom: 8px; color: var(--secondary); font-size: 0.9rem;">CORE COMPETENCIES</strong> 
+            <span class="tag">ASIC Physical Design Flow</span>
+            <span class="tag">Static Timing Analysis (STA)</span>
+            <span class="tag">Scripting & Automation (Tcl, C++)</span>
+        </div>
+        <div>
+            <strong style="display: block; margin-bottom: 8px; color: var(--secondary); font-size: 0.9rem;">SOFTWARE & MODELING</strong> 
+            <span class="tag">Cadence Genus</span>
+            <span class="tag">Cadence Innovus</span>
+            <span class="tag">Cadence Virtuoso</span>
+            <span class="tag">COMSOL Multiphysics</span>
+            <span class="tag">MATLAB</span>
         </div>
     </section>
     
