@@ -13,7 +13,8 @@
             --card-bg: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.1);
             --hover-border: rgba(255, 255, 255, 0.2);
-            --header-highlight: rgba(34, 197, 94, 0.05);
+            /* Increased highlight visibility */
+            --header-highlight: rgba(34, 197, 94, 0.12); 
         }
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -29,17 +30,19 @@
             padding: 60px 20px;
         }
 
-        /* Highlighted Header Section */
+        /* Enhanced Highlighted Header Section */
         header {
-            background: linear-gradient(145deg, var(--header-highlight), transparent);
+            background: linear-gradient(160deg, var(--header-highlight) 0%, rgba(34, 197, 94, 0.02) 100%);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 3rem;
-            margin-bottom: 3rem;
+            border-left: 4px solid var(--accent); /* Added a vertical accent line */
+            border-radius: 12px;
+            padding: 3.5rem;
+            margin-bottom: 4rem;
             display: flex;
             align-items: center;
-            gap: 40px;
-            backdrop-filter: blur(10px);
+            gap: 45px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .profile-photo {
@@ -48,18 +51,18 @@
             border-radius: 50%;
             object-fit: cover;
             object-position: top;
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 25px rgba(34, 197, 94, 0.3);
             flex-shrink: 0;
         }
         .header-text { flex: 1; }
-        h1 { font-size: 2.8rem; margin: 0 0 0.5rem 0; color: var(--text-primary); letter-spacing: -0.025em; }
+        h1 { font-size: 2.8rem; margin: 0 0 0.5rem 0; color: #ffffff; letter-spacing: -0.025em; }
         
         .subtitle { 
             font-size: 1.15rem; 
-            color: rgba(255, 255, 255, 0.85); 
+            color: rgba(255, 255, 255, 0.9); 
             font-weight: 700; 
-            margin-bottom: 1.5rem; 
+            margin-bottom: 1.8rem; 
             max-width: 600px; 
         }
         
@@ -85,18 +88,19 @@
             border: 1px solid var(--border);
         }
         .social-box a {
-            background: var(--bg);
-            padding: 8px 16px;
+            background: rgba(0,0,0,0.4);
+            padding: 10px 20px;
             font-size: 0.85rem;
-            color: var(--text-secondary);
+            color: #ffffff;
             text-decoration: none;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
+            font-weight: 500;
         }
         .social-box a:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--accent);
+            background: var(--accent);
+            color: #000000;
         }
 
         /* Project Grid & Clickable Images */
@@ -117,6 +121,7 @@
         .project-img-wrapper:hover {
             border-color: var(--accent);
             background: rgba(255,255,255,0.04);
+            transform: translateY(-2px);
         }
         .project-image-title {
             font-size: 0.8rem;
@@ -140,16 +145,19 @@
             position: fixed;
             z-index: 1000;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             justify-content: center;
             align-items: center;
             cursor: zoom-out;
+            animation: fadeIn 0.3s ease;
         }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         #lightbox img {
             max-width: 90%;
             max-height: 90%;
-            border: 2px solid var(--border);
+            border: 2px solid var(--accent);
             border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
         }
 
         .tag {
@@ -200,7 +208,7 @@
         footer { text-align: center; margin-top: 8rem; padding: 4rem 0; color: var(--text-secondary); font-size: 0.8rem; border-top: 1px solid var(--border); }
 
         @media (max-width: 768px) {
-            header { flex-direction: column; text-align: center; gap: 20px; padding: 2rem; }
+            header { flex-direction: column; text-align: center; gap: 20px; padding: 2rem; border-left: none; border-top: 4px solid var(--accent); }
             .social-box { flex-wrap: wrap; justify-content: center; }
             h2::after { display: none; }
         }
