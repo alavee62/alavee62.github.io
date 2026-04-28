@@ -6,19 +6,13 @@
     <title>Mohammed Ashfaq Alavee | Engineer & Researcher</title>
     <style>
         :root {
-            /* Black Background, Transparent White, and Green Palette */
             --bg: #000000;
-            
-            /* Text Levels (Transparent White) */
-            --text-primary: rgba(255, 255, 255, 0.9);   /* Bright but soft white */
-            --text-secondary: rgba(255, 255, 255, 0.6); /* Muted/Misty white */
-            
-            --accent: #22c55e; /* Highlighting Green */
-            
-            /* Card/Element Aesthetics (Transparent White layers) */
-            --card-bg: rgba(255, 255, 255, 0.03);     /* Very transparent frosted glass */
-            --border: rgba(255, 255, 255, 0.1);       /* Subtle border */
-            --hover-border: rgba(255, 255, 255, 0.2); /* Slightly stronger border on hover */
+            --text-primary: rgba(255, 255, 255, 0.9);
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --accent: #22c55e;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --hover-border: rgba(255, 255, 255, 0.2);
         }
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -47,14 +41,13 @@
             border-radius: 50%;
             object-fit: cover;
             object-position: top;
-            border: 2px solid var(--accent); /* Maintain green highlight */
-            box-shadow: 0 0 15px rgba(34, 197, 94, 0.15); /* Softened glow */
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.15);
             flex-shrink: 0;
         }
         .header-text { flex: 1; }
         h1 { font-size: 2.8rem; margin: 0 0 0.5rem 0; color: var(--text-primary); letter-spacing: -0.025em; }
         
-        /* Heading Highlights */
         h2 { 
             font-size: 1.4rem; 
             color: var(--accent); 
@@ -67,11 +60,36 @@
         }
         h2::after { content: ""; flex: 1; height: 1px; background: var(--border); margin-left: 20px; }
         
-        .subtitle { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 600px; }
+        .subtitle { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 600px; }
         
+        /* Boxed Social Links */
+        .social-box {
+            display: inline-flex;
+            gap: 1px;
+            background: var(--border);
+            padding: 1px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .social-box a {
+            background: var(--bg);
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+        .social-box a:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent);
+        }
+
         .tag {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.05); /* Transparent White Tag */
+            background: rgba(255, 255, 255, 0.05);
             padding: 5px 12px;
             border-radius: 4px;
             font-size: 0.8rem;
@@ -80,26 +98,25 @@
             color: var(--text-secondary);
             transition: all 0.3s ease;
         }
-        .tag:hover { border-color: rgba(255, 255, 255, 0.4); color: var(--text-primary); background: rgba(255, 255, 255, 0.08); }
+        .tag:hover { border-color: rgba(255, 255, 255, 0.4); color: var(--text-primary); }
 
         .project-card {
-            background: var(--card-bg); /* Transparent layer */
+            background: var(--card-bg);
             padding: 28px;
             border-radius: 8px;
             margin-bottom: 1.5rem;
             border: 1px solid var(--border);
-            backdrop-filter: blur(5px); /* Optional frosted glass effect */
+            backdrop-filter: blur(5px);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .project-card:hover { 
             border-color: var(--hover-border);
             transform: translateY(-4px);
-            background-color: rgba(255, 255, 255, 0.05); /* Slightly less transparent on hover */
         }
         .status-badge {
             font-size: 0.7rem;
             text-transform: uppercase;
-            color: var(--accent); /* Maintain green highlight */
+            color: var(--accent);
             font-weight: 700;
             letter-spacing: 0.1rem;
             background: rgba(34, 197, 94, 0.1);
@@ -107,7 +124,7 @@
             border-radius: 4px;
         }
         .section-sub-heading {
-            color: var(--accent); /* Maintain green highlight */
+            color: var(--accent);
             font-size: 0.85rem; 
             margin: 2.5rem 0 1rem 0;
             text-transform: uppercase; 
@@ -118,7 +135,7 @@
             display: inline-flex;
             align-items: center;
             background-color: var(--accent);
-            color: #000000 !important; /* Keep text solid black on green */
+            color: #000000 !important;
             padding: 12px 24px;
             border-radius: 4px;
             font-weight: 700;
@@ -128,24 +145,13 @@
         .download-btn:hover {
             background-color: #4ade80;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
         }
-        .download-btn svg { margin-right: 10px; }
-        
-        a { color: var(--accent); text-decoration: none; transition: 0.2s; }
-        a:hover { opacity: 0.8; }
-        
-        .social-links a { margin-right: 25px; font-size: 0.9rem; color: var(--text-secondary); border-bottom: 1px solid transparent; }
-        .social-links a:hover { color: var(--text-primary); border-color: var(--text-primary); }
         
         footer { text-align: center; margin-top: 8rem; padding: 4rem 0; color: var(--text-secondary); font-size: 0.8rem; border-top: 1px solid var(--border); }
 
         @media (max-width: 768px) {
             header { flex-direction: column; text-align: center; gap: 20px; }
-            .profile-photo { width: 140px; height: 140px; }
-            h1 { font-size: 2.2rem; }
-            .education-header { flex-direction: column; }
-            .edu-date { text-align: left !important; margin-top: 15px; }
+            .social-box { flex-wrap: wrap; justify-content: center; }
             h2::after { display: none; }
         }
     </style>
@@ -158,7 +164,7 @@
         <div class="header-text">
             <h1>Mohammed Ashfaq Alavee</h1>
             <p class="subtitle">Junior ASIC Physical Design Engineer at PrimeSilicon Technology (BD) Ltd.</p>
-            <div class="social-links">
+            <div class="social-box">
                 <a href="mailto:alavee526@gmail.com">Email</a>
                 <a href="https://www.linkedin.com/in/mohammed-ashfaq-alavee-51288b230" target="_blank">LinkedIn</a>
                 <a href="https://www.researchgate.net/profile/Mohammed-Alavee" target="_blank">ResearchGate</a>
@@ -175,13 +181,12 @@
 
     <section id="research">
         <h2>Research & Publications</h2>
-        
-        <h3 class="section-sub-heading">Selected Conferences</h3>
+        <h3 class="section-sub-heading">Conferences</h3>
         <div class="project-card">
             <h3 style="margin: 0 0 10px 0;">A Highly Sensitive and Optimized SPR Biosensor for Monitoring Polluted Water Samples</h3>
             <p><em style="color: var(--text-secondary);">ICECTE, 2026 | Rajshahi, Bangladesh</em></p>
             <p style="margin-top: 15px;">
-                <a href="https://ieeexplore.ieee.org/document/11429250" target="_blank">View on IEEE Xplore →</a>
+                <a href="https://ieeexplore.ieee.org/document/11429250" target="_blank" style="color: var(--accent);">View on IEEE Xplore →</a>
             </p>
         </div>
 
@@ -189,7 +194,7 @@
             <h3 style="margin: 0 0 10px 0;">Design and Performance Analysis of a Highly Sensitive SPR Biosensor for Water Pollution Detection</h3>
             <p><em style="color: var(--text-secondary);">FiO+LS, 2025 | Virtual</em></p>
             <p style="margin-top: 15px;">
-                <a href="https://doi.org/10.1364/FIO.2025.JD1A.5" target="_blank">View Publication →</a>
+                <a href="https://doi.org/10.1364/FIO.2025.JD1A.5" target="_blank" style="color: var(--accent);">View Publication →</a>
             </p>
         </div>
     </section>
@@ -197,7 +202,7 @@
     <section id="education">
         <h2>Education</h2>
         <div class="project-card">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;" class="education-header">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;">
                 <div style="flex: 1;">
                     <h3 style="margin: 0; color: var(--text-primary); font-size: 1.2rem;">B.Sc. in Electrical and Electronic Engineering</h3>
                     <p style="margin: 8px 0; color: rgba(255,255,255,0.7); font-weight: 500;">Ahsanullah University of Science and Technology (AUST)</p>
@@ -206,7 +211,7 @@
                         <p style="margin: 0; font-size: 0.9rem;"><strong style="color: var(--text-secondary);">Thesis:</strong> Nanophotonics</p>
                     </div>
                 </div>
-                <div style="text-align: right; min-width: 120px;" class="edu-date">
+                <div style="text-align: right; min-width: 120px;">
                     <span class="status-badge" style="border: 1px solid var(--border); color: var(--text-primary); background: transparent;">Graduated</span>
                     <p style="margin: 10px 0 0 0; font-size: 0.9rem; color: var(--text-secondary); font-weight: 600;">2021 — 2025</p>
                 </div>
@@ -235,8 +240,7 @@
     </section>
 
     <section id="cv-download" style="background: rgba(255, 255, 255, 0.02); padding: 40px; border-radius: 8px; border: 1px solid var(--border); backdrop-filter: blur(10px); text-align: center; margin-top: 4rem;">
-        <h3 style="margin-top: 0; color: var(--text-primary);">Curriculum Vitae</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 25px;">Download my latest resume for a detailed overview of my professional experience.</p>
+        <p style="color: var(--text-secondary); margin-bottom: 25px;">Download my latest resume for a detailed overview</p>
         <a href="CV_Alavee.pdf" download class="download-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             Download CV
