@@ -14,6 +14,7 @@
             --accent: #22c55e;
             --card-bg: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.1);
+            --hover-border: rgba(255, 255, 255, 0.2);
             --header-highlight: rgba(34, 197, 94, 0.12); 
         }
 
@@ -29,7 +30,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999; /* Stays on top */
+            z-index: 9999;
             transition: opacity 0.8s ease, visibility 0.8s;
             text-align: center;
         }
@@ -70,7 +71,7 @@
             box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
         }
 
-        /* --- REST OF YOUR ORIGINAL STYLES --- */
+        /* --- MAIN SITE STYLES --- */
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             background-color: var(--bg);
@@ -81,7 +82,6 @@
             overflow-x: hidden;
         }
 
-        /* Hide content until splash is clicked (Optional) */
         .main-content {
             opacity: 0;
             transition: opacity 1s ease;
@@ -95,11 +95,6 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 60px 20px;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         header {
@@ -152,6 +147,7 @@
             border-radius: 8px;
             margin-bottom: 2rem;
             border: 1px solid var(--border);
+            backdrop-filter: blur(5px);
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
         
@@ -159,6 +155,37 @@
             transform: translateY(-5px);
             border-color: var(--accent);
         }
+
+        .project-image-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .project-img-wrapper { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 6px; padding: 12px; transition: all 0.3s ease; cursor: zoom-in; }
+        .project-img-wrapper:hover { border-color: var(--accent); background: rgba(255,255,255,0.04); transform: translateY(-2px); }
+        .project-image-title { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 10px; display: block; font-weight: 500; min-height: 2.5em; }
+        .project-img { width: 100%; height: 180px; object-fit: cover; border-radius: 4px; opacity: 0.9; }
+
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        #lightbox img { max-width: 90%; max-height: 90%; border: 2px solid var(--accent); border-radius: 8px; }
+
+        .tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin: 4px;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+        .tag:hover { border-color: var(--accent); color: var(--text-primary); }
 
         .social-box { display: inline-flex; gap: 1px; background: var(--border); padding: 1px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
         .social-box a {
@@ -174,17 +201,6 @@
         }
         .social-box a:hover { background: var(--accent); color: #000000; }
 
-        .tag {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin: 4px;
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-        }
-
         .download-btn {
             display: inline-flex;
             align-items: center;
@@ -197,24 +213,39 @@
             transition: all 0.3s ease;
             text-decoration: none !important;
         }
+        .download-btn:hover { background-color: #4ade80; transform: translateY(-2px); }
+        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(3px); } }
+        .download-btn:hover svg { animation: bounce 0.4s infinite alternate; }
 
         footer { text-align: center; margin-top: 8rem; padding: 4rem 0; color: var(--text-secondary); font-size: 0.8rem; border-top: 1px solid var(--border); }
 
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @media (max-width: 768px) {
-            header { flex-direction: column; text-align: center; gap: 20px; padding: 2rem; }
+            header { flex-direction: column; text-align: center; gap: 20px; padding: 2rem; border-left: none; border-top: 4px solid var(--accent); }
+            .social-box { flex-wrap: wrap; justify-content: center; }
+            h2::after { display: none; }
             .welcome-text { font-size: 1.8rem; padding: 0 20px; }
         }
     </style>
 </head>
 <body>
 
-<!-- Splash Screen / Cover Page -->
+<!-- Splash Screen -->
 <div id="splash-screen">
     <div class="welcome-text">Welcome to the website of Alavee!</div>
     <button class="next-btn" onclick="enterSite()">
         Next 
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
     </button>
+</div>
+
+<!-- Lightbox for Project Images -->
+<div id="lightbox" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="" alt="Zoomed view">
 </div>
 
 <!-- Main Website Content -->
@@ -233,7 +264,6 @@
             </div>
         </header>
         
-        <!-- About Section -->
         <section id="about" data-aos="fade-up">
             <h2>About Me</h2>
             <p style="font-size: 1.1rem; color: var(--text-secondary);">
@@ -241,30 +271,93 @@
             </p>
         </section>
 
-        <!-- Projects Section (Simplified for space) -->
+        <section id="research" data-aos="fade-up">
+            <h2>Research & Publications</h2>
+            <h3 class="section-sub-heading" style="color: var(--accent); font-size: 0.85rem; margin: 2.5rem 0 1rem 0; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Conferences</h3>
+            <div class="project-card">
+                <h3 style="margin: 0 0 10px 0;">A Highly Sensitive and Optimized SPR Biosensor for Monitoring Polluted Water Samples</h3>
+                <p><em style="color: var(--text-secondary);">ICECTE, 2026 | Rajshahi, Bangladesh</em></p>
+                <p style="margin-top: 15px;">
+                    <a href="https://ieeexplore.ieee.org/document/11429250" target="_blank" style="color: var(--accent); text-decoration: none;">View on IEEE Xplore →</a>
+                </p>
+            </div>
+            <div class="project-card">
+                <h3 style="margin: 0 0 10px 0;">Design and Performance Analysis of a Highly Sensitive SPR Biosensor for Water Pollution Detection</h3>
+                <p><em style="color: var(--text-secondary);">FiO+LS, 2025 | Virtual</em></p>
+                <p style="margin-top: 15px;">
+                    <a href="https://doi.org/10.1364/FIO.2025.JD1A.5" target="_blank" style="color: var(--accent); text-decoration: none;">View Publication →</a>
+                </p>
+            </div>
+        </section>
+
         <section id="projects" data-aos="fade-up">
             <h2>Technical Projects</h2>
             <div class="project-card">
                 <h3 style="margin: 0; color: var(--text-primary);">Data Packet Managing Network Router Chip</h3>
-                <p style="color: var(--text-secondary);">Design of an efficient router chip using the 45 nm technology node.</p>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">Design of an efficient router chip using the 45 nm technology node, focusing on high-speed data throughput and optimized power consumption.</p>
+                
+                <div class="project-image-container">
+                    <div class="project-img-wrapper" onclick="zoomImage(this)">
+                        <span class="project-image-title">Synthesized Schematic View</span>
+                        <img src="project1-1.png" alt="Synthesis" class="project-img">
+                    </div>
+                    <div class="project-img-wrapper" onclick="zoomImage(this)">
+                        <span class="project-image-title">Generated GDSII File</span>
+                        <img src="project1-2.png" alt="GDSII" class="project-img">
+                    </div>
+                    <div class="project-img-wrapper" onclick="zoomImage(this)">
+                        <span class="project-image-title">Final Layout View</span>
+                        <img src="project1-3.png" alt="Layout" class="project-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="education" data-aos="fade-up">
+            <h2>Education</h2>
+            <div class="project-card">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;">
+                    <div style="flex: 1;">
+                        <h3 style="margin: 0; color: var(--text-primary); font-size: 1.2rem;">B.Sc. in Electrical and Electronic Engineering</h3>
+                        <p style="margin: 8px 0; color: rgba(255,255,255,0.7); font-weight: 500;">Ahsanullah University of Science and Technology (AUST)</p>
+                        <div style="margin-top: 15px; border-top: 1px solid var(--border); padding-top: 15px; display: flex; gap: 20px;">
+                            <p style="margin: 0; font-size: 0.9rem;"><strong style="color: var(--text-secondary);">Major:</strong> Electronics</p>
+                            <p style="margin: 0; font-size: 0.9rem;"><strong style="color: var(--text-secondary);">Thesis:</strong> Nanophotonics</p>
+                        </div>
+                    </div>
+                    <div style="text-align: right; min-width: 120px;">
+                        <p style="margin: 0; font-size: 0.9rem; color: var(--text-secondary); font-weight: 600;">2021 — 2025</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Expertise Section -->
         <section id="expertise" data-aos="fade-up">
             <h2>Technical Proficiencies</h2>
-            <div>
+            <div style="margin-bottom: 2rem;">
+                <p style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Core Design & Analysis</p> 
                 <span class="tag">ASIC Physical Design Flow</span>
                 <span class="tag">Static Timing Analysis (STA)</span>
+                <span class="tag">Physical Verification</span>
                 <span class="tag">Tcl Scripting</span>
+                <span class="tag">Verilog HDL</span>
+            </div>
+            <div>
+                <p style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Industry Standard Tools</p> 
                 <span class="tag">Cadence Innovus</span>
+                <span class="tag">Cadence Genus</span>
+                <span class="tag">Cadence Virtuoso</span>
+                <span class="tag">COMSOL Multiphysics</span>
+                <span class="tag">MATLAB</span>
             </div>
         </section>
 
-        <!-- CV Download -->
-        <section id="cv-download" data-aos="zoom-in" style="background: rgba(255, 255, 255, 0.02); padding: 40px; border-radius: 8px; border: 1px solid var(--border); text-align: center; margin-top: 4rem;">
-            <p style="color: var(--text-secondary); margin-bottom: 25px;">Download my latest resume</p>
-            <a href="CV_Alavee.pdf" download class="download-btn">Download</a>
+        <section id="cv-download" data-aos="zoom-in" style="background: rgba(255, 255, 255, 0.02); padding: 40px; border-radius: 8px; border: 1px solid var(--border); backdrop-filter: blur(10px); text-align: center; margin-top: 4rem;">
+            <p style="color: var(--text-secondary); margin-bottom: 25px;">Download my latest resume for a detailed overview</p>
+            <a href="CV_Alavee.pdf" download class="download-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Download
+            </a>
         </section>
         
         <footer>
@@ -276,30 +369,36 @@
 <!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    // Splash Screen Logic
     function enterSite() {
         const splash = document.getElementById('splash-screen');
         const content = document.getElementById('main-content');
-        
-        // Hide Splash
         splash.classList.add('hidden');
-        
-        // Reveal Content
         content.classList.add('visible');
         
-        // Initialize AOS animations after entering
         setTimeout(() => {
             AOS.init({
                 duration: 800,
-                once: true
+                once: true,
+                offset: 100
             });
         }, 400);
     }
 
-    // Optional: Allow pressing 'Enter' key to enter site
+    function zoomImage(wrapper) {
+        const img = wrapper.querySelector('img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        lightboxImg.src = img.src;
+        lightbox.style.display = 'flex';
+    }
+
+    // Keydown listener for Enter key
     document.addEventListener('keydown', function(event) {
         if (event.key === "Enter") {
-            enterSite();
+            const splash = document.getElementById('splash-screen');
+            if (!splash.classList.contains('hidden')) {
+                enterSite();
+            }
         }
     });
 </script>
