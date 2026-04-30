@@ -40,6 +40,23 @@
             visibility: hidden;
         }
 
+        /* Splash Image Style */
+        .splash-image {
+            width: 150px; /* Adjust size as needed */
+            height: 150px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            border: 2px solid var(--accent);
+            filter: drop-shadow(0 0 20px rgba(34, 197, 94, 0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
         .welcome-text {
             font-size: 2.5rem;
             font-weight: 700;
@@ -151,10 +168,7 @@
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
         
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--accent); }
 
         .project-image-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
         .project-img-wrapper { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 6px; padding: 12px; transition: all 0.3s ease; cursor: zoom-in; }
@@ -229,6 +243,7 @@
             .social-box { flex-wrap: wrap; justify-content: center; }
             h2::after { display: none; }
             .welcome-text { font-size: 1.8rem; padding: 0 20px; }
+            .splash-image { width: 120px; height: 120px; }
         }
     </style>
 </head>
@@ -236,6 +251,8 @@
 
 <!-- Splash Screen -->
 <div id="splash-screen">
+    <!-- Replace 'welcome.jpg' with your image file name -->
+    <img src="welcome.jpeg" alt="Welcome Image" class="splash-image">
     <div class="welcome-text">Welcome to the website of Alavee!</div>
     <button class="next-btn" onclick="enterSite()">
         Next 
@@ -273,7 +290,7 @@
 
         <section id="research" data-aos="fade-up">
             <h2>Research & Publications</h2>
-            <h3 class="section-sub-heading" style="color: var(--accent); font-size: 0.85rem; margin: 2.5rem 0 1rem 0; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Conferences</h3>
+            <h3 style="color: var(--accent); font-size: 0.85rem; margin: 2.5rem 0 1rem 0; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Conferences</h3>
             <div class="project-card">
                 <h3 style="margin: 0 0 10px 0;">A Highly Sensitive and Optimized SPR Biosensor for Monitoring Polluted Water Samples</h3>
                 <p><em style="color: var(--text-secondary);">ICECTE, 2026 | Rajshahi, Bangladesh</em></p>
@@ -392,7 +409,6 @@
         lightbox.style.display = 'flex';
     }
 
-    // Keydown listener for Enter key
     document.addEventListener('keydown', function(event) {
         if (event.key === "Enter") {
             const splash = document.getElementById('splash-screen');
